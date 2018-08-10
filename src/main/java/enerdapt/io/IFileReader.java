@@ -10,9 +10,9 @@ public interface IFileReader {
 
     public abstract void write();
 
-    public abstract void setScanner(File file)throws FileNotFoundException;
+    public abstract void setScanner(File file);
 
-    public abstract File getFile(String fileName);
+    public abstract File getFile(String filePath);
 
     public abstract void closeFile();
 

@@ -11,10 +11,10 @@ import java.util.Scanner;
  */
 public class FileHandler implements IFileReader{
     private Scanner scanner;
-    private String fileName;
+    private String filePath;
 
-    public FileHandler(String fileName){
-        this.fileName = fileName;
+    public FileHandler(String filePath){
+        this.filePath = filePath;
     }
 
     @Override
@@ -27,19 +27,27 @@ public class FileHandler implements IFileReader{
 
     }
 
+    /**
+     *
+     * @param file
+     */
     @Override
-    public void setScanner(File file) throws FileNotFoundException{
+    public void setScanner(File file){
         try{
             this.scanner = new Scanner(file);
         }catch (FileNotFoundException e){
-            throw new FileNotFoundException(e.getMessage());
+            throw new NullPointerException(e.getMessage());
         }
     }
 
     @Override
-    public File getFile(String fileName)
+    public File getFile(String filePath)
     {
-        return new File(fileName);
+        File file = new File(filePath);
+        if(file.exists()){
+            return file;
+        }
+        return null;
     }
 
     @Override
