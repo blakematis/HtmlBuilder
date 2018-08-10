@@ -1,0 +1,10 @@
+#class
+*.class
+/.gradle
+/.idea
+gradlew
+.bat
+*.properties
+*.MF
+*.bat
+gradle/wrapper/gradle-wrapper.jar
