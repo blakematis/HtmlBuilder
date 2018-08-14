@@ -8,3 +8,4 @@ gradlew
 *.MF
 *.bat
 gradle/wrapper/gradle-wrapper.jar
+*.iml
