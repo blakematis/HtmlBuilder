@@ -10,6 +10,7 @@ public class Label extends JLabel {
     private BeveledBorder beveledBorder;
 
     public Label(String text, Component parent){
+        super(text);
         this.beveledBorder = new BeveledBorder();
         this.setText(text);
     }
