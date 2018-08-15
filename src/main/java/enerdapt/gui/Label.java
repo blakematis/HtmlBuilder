@@ -12,6 +12,7 @@ public class Label extends JLabel {
     public Label(String text, Component parent){
         super(text);
         this.beveledBorder = new BeveledBorder();
+        this.setBorder(beveledBorder);
         this.setText(text);
     }
 }
