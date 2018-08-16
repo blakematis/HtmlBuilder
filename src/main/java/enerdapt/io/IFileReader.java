@@ -15,6 +15,8 @@ public interface IFileReader {
 
     public abstract void setFile(String filePath) throws FileNotFoundException;
 
+    public abstract void setFile(File file) throws FileNotFoundException;
+
     public abstract void closeFile();
 
 }
