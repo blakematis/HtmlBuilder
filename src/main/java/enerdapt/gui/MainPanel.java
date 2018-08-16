@@ -7,6 +7,7 @@ public class MainPanel extends JPanel {
 
     private Label filePathLabel;
     private TextBox filePathTextBox;
+    private FileChooser fileChooser;
 
     public MainPanel() {
         this.setLayout(new BorderLayout());
@@ -16,8 +17,10 @@ public class MainPanel extends JPanel {
     public void setCenterComponents() {
         filePathLabel = new Label("Enter the HTML file path", this);
         filePathTextBox = new TextBox("");
+        fileChooser = new FileChooser();
 
         this.add(filePathLabel, BorderLayout.CENTER);
         this.add(filePathTextBox, BorderLayout.CENTER);
+        this.add(fileChooser, BorderLayout.CENTER);
     }
 }
