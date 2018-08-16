@@ -19,8 +19,9 @@ public class MainPanel extends JPanel {
         filePathTextBox = new TextBox("");
         fileChooser = new FileChooser();
 
-        this.add(filePathLabel, BorderLayout.CENTER);
-        this.add(filePathTextBox, BorderLayout.CENTER);
+        this.add(filePathLabel, BorderLayout.NORTH);
         this.add(fileChooser, BorderLayout.CENTER);
+        this.add(filePathTextBox, BorderLayout.SOUTH);
+
     }
 }
