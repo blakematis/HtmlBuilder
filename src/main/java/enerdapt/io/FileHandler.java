@@ -23,7 +23,21 @@ public class FileHandler implements IFileReader{
         try{
             setFile(filePath);
             setScanner(file);
+            log.info("file handler correctly loaded file");
         }catch (FileNotFoundException e){
+            log.severe(e.getMessage() + " unable to find file");
+            e.printStackTrace();
+        }
+    }
+
+    public FileHandler(File file){
+        this.filePath = file.getPath();
+        try {
+            setFile(file);
+            setScanner(file);
+            log.info("file handler correctly loaded file");
+        } catch (FileNotFoundException e) {
+            log.severe(e.getMessage() + " unable to find file");
             e.printStackTrace();
         }
     }
@@ -68,6 +82,10 @@ public class FileHandler implements IFileReader{
     @Override
     public void setFile(String filePath)throws FileNotFoundException{
         this.file = new File(filePath);
+    }
+
+    public void setFile(File file) throws FileNotFoundException{
+        this.file = file;
     }
 
     @Override
