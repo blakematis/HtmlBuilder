@@ -90,6 +90,6 @@ public class FileHandler implements IFileReader{
 
     @Override
     public void closeFile() {
-
+        this.scanner.close();
     }
 }
