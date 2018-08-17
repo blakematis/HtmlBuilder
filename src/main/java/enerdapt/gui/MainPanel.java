@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class MainPanel extends JPanel {
 
     private Label filePathLabel;
-    private Button button;
+    private Button openFileChooserButton;
     private TextBox filePathTextBox;
     private FileChooser fileChooser;
     private FileHandler fileHandler;
@@ -23,19 +23,22 @@ public class MainPanel extends JPanel {
     public void setCenterComponents() {
         filePathLabel = new Label("No File Loaded", this);
         fileChooser = new FileChooser();
-        button = new Button("Open File Explorer");
+        openFileChooserButton = new Button("Open File Explorer");
         fileHandler = null;
         this.add(filePathLabel);
-        this.add(button);
+        this.add(openFileChooserButton);
         this.add(fileChooser);
         fileChooser.setVisible(false);
 
         //If button is pressed it will open the fileChooser
-        button.addActionListener(new ActionListener() {
+        openFileChooserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(fileHandler != null){
+                    fileHandler.closeFile();
+                }
                 fileChooser.setVisible(true);
-                button.setVisible(false);
+                openFileChooserButton.setVisible(false);
             }
         });
 
@@ -46,15 +49,15 @@ public class MainPanel extends JPanel {
                     if(fileChooser.getSelectedFile() != null){
                         fileHandler = new FileHandler(fileChooser.getSelectedFile().getPath());
                         filePathLabel.setText("File Found: " +fileHandler.getFile().getPath());
-                        fileChooser.setVisible(false);
-                        button.setVisible(true);
+
                     }else{
                         fileHandler = null;
                         filePathLabel.setText("No File Loaded");
-                        fileChooser.setVisible(false);
-                        button.setVisible(true);
+
                     }
                 }
+                fileChooser.setVisible(false);
+                openFileChooserButton.setVisible(true);
             }
         });
     }
@@ -69,12 +72,12 @@ public class MainPanel extends JPanel {
         this.filePathLabel = filePathLabel;
     }
 
-    public Button getButton(){
-        return button;
+    public Button getFileChooserButton(){
+        return openFileChooserButton;
     }
 
-    public void setButton(Button button){
-        this.button = button;
+    public void setFileChooserButton(Button button){
+        this.openFileChooserButton = button;
     }
 
     public FileChooser getFileChooser() {
