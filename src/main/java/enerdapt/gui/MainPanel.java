@@ -14,6 +14,7 @@ public class MainPanel extends JPanel {
     private TextBox filePathTextBox;
     private FileChooser fileChooser;
     private FileHandler fileHandler;
+    private Notepad notepad;
 
     public MainPanel() {
         this.setLayout(new FlowLayout());
@@ -49,7 +50,7 @@ public class MainPanel extends JPanel {
                     if(fileChooser.getSelectedFile() != null){
                         fileHandler = new FileHandler(fileChooser.getSelectedFile().getPath());
                         filePathLabel.setText("File Found: " +fileHandler.getFile().getPath());
-
+                        notepad = new Notepad(fileHandler.getFile().getPath());
                     }else{
                         fileHandler = null;
                         filePathLabel.setText("No File Loaded");
