@@ -24,8 +24,10 @@ public class MainPanel extends JPanel {
     public void setCenterComponents() {
         filePathLabel = new Label("No File Loaded", this);
         fileChooser = new FileChooser();
+        fileChooser.setSize(this.getHeight()-20, this.getWidth()-20);
         openFileChooserButton = new Button("Open File Explorer");
         fileHandler = null;
+
         this.add(filePathLabel);
         this.add(openFileChooserButton);
         this.add(fileChooser);
