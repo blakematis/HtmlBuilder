@@ -1,8 +1,6 @@
 package enerdapt.gui;
 
 import javax.swing.*;
-import java.awt.*;
-
 
 /** Main JFrame of the application
  *
@@ -21,6 +19,7 @@ public class MainFrame extends JFrame {
         mainPanel = new MainPanel();
         this.setContentPane(mainPanel);
         this.setVisible(true);
+
     }
 
 }
