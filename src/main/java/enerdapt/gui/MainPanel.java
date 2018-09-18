@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 public class MainPanel extends JPanel {
 
     private Label filePathLabel;
+    private Button newFileButton;
     private Button openFileChooserButton;
     private TextBox filePathTextBox;
     private FileChooser fileChooser;
@@ -25,9 +26,11 @@ public class MainPanel extends JPanel {
         filePathLabel = new Label("No File Loaded", this);
         fileChooser = new FileChooser();
         fileChooser.setSize(this.getHeight()-20, this.getWidth()-20);
-        openFileChooserButton = new Button("Open File Explorer");
+        openFileChooserButton = new Button("Load Existing");
+        newFileButton = new Button("New");
         fileHandler = null;
 
+        this.add(newFileButton);
         this.add(filePathLabel);
         this.add(openFileChooserButton);
         this.add(fileChooser);
@@ -41,6 +44,7 @@ public class MainPanel extends JPanel {
                     fileHandler.closeFile();
                 }
                 fileChooser.setVisible(true);
+                newFileButton.setVisible(false);
                 openFileChooserButton.setVisible(false);
             }
         });
@@ -48,19 +52,21 @@ public class MainPanel extends JPanel {
         fileChooser.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(fileChooser.isVisible()){
-                    if(fileChooser.getSelectedFile() != null){
+                if(fileChooser.isVisible()) {
+                    if (fileChooser.getSelectedFile() != null) {
                         fileHandler = new FileHandler(fileChooser.getSelectedFile().getPath());
-                        filePathLabel.setText("File Found: " +fileHandler.getFile().getPath());
+                        filePathLabel.setText("File Found: " + fileHandler.getFile().getPath());
                         notepad = new Notepad(fileHandler.getFile().getPath());
+                        newFileButton.setVisible(false);
                     }else{
                         fileHandler = null;
                         filePathLabel.setText("No File Loaded");
-
+                        fileChooser.setVisible(true);
                     }
                 }
                 fileChooser.setVisible(false);
                 openFileChooserButton.setVisible(true);
+
             }
         });
     }
